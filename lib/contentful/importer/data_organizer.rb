@@ -74,7 +74,7 @@ module Contentful
       end
 
       def new_entry_name(content_type_id, entry_path)
-        "#{content_type_id}_#{File.basename(entry_path, '.*').match(/(\d+)/)[0]}.json"
+        "#{content_type_id}_#{File.basename(entry_path, '.*').split('_').last}.json"
       end
 
       def copy_entry(entry_path, current_thread, content_type_id)

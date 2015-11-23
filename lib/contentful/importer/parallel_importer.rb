@@ -66,7 +66,7 @@ module Contentful
         create_log_file(log_file_name)
         load_log_files
         Dir.glob("#{path}/*.json") do |entry_path|
-          content_type_id = File.basename(entry_path).match(/(.+)_\d+/)[1]
+          content_type_id = File.basename(entry_path).split('_')[0]
           entry_file_name = File.basename(entry_path)
           import_entry(entry_path, space_id, content_type_id, log_file_name) unless config.imported_entries.flatten.include?(entry_file_name)
         end
